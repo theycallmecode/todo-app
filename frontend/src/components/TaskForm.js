@@ -20,7 +20,7 @@ const TaskForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md bg-dark-card p-6 rounded-lg shadow-lg mb-8">
+    <form onSubmit={handleSubmit} className="w-full max-w-md bg-dark-card p-6 rounded-lg shadow-lg mb-8 relative animate-glow">
       <div className="mb-4">
         <label className="block text-sm font-medium mb-2" htmlFor="title">Task Title</label>
         <input
@@ -45,7 +45,7 @@ const TaskForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full bg-purple-accent text-white py-2 rounded hover:bg-purple-hover transition"
+        className="w-full bg-purple-accent text-white py-2 rounded hover:bg-purple-hover transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-accent/50"
       >
         Add Task
       </button>

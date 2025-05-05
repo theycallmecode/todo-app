@@ -8,11 +8,18 @@ const TaskItem = ({ task, setTasks }) => {
   const [completed, setCompleted] = useState(task.completed);
 
   const handleDelete = async () => {
+    if (!task._id) {
+      console.error('Task ID is undefined');
+      return;
+    }
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${task._id}`);
-      setTasks((prevTasks) => prevTasks.filter((t) => t._id !== task._id));
+      const response = await axios.delete(`http://localhost:5000/api/tasks/${task._id}`);
+      if (response.status === 200) {
+        setTasks((prevTasks) => prevTasks.filter((t) => t._id !== task._id));
+        console.log('Task deleted successfully');
+      }
     } catch (error) {
-      console.error('Error deleting task:', error);
+      console.error('Error deleting task:', error.response?.data || error.message);
     }
   };
 
