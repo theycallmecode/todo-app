@@ -1,70 +1,231 @@
-# Getting Started with Create React App
+MERN To-Do List Application
+A full-stack to-do list application built with the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. The app allows users to create, read, update, and delete tasks with a modern black-and-purple UI, featuring a glowing "Add Task" button and smooth transitions.
+This project was developed as a college assignment to demonstrate proficiency in full-stack web development.
+Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create Tasks: Add tasks with a title and optional description using a glowing form.
+View Tasks: Display tasks in a responsive list with completion status.
+Update Tasks: Edit task details or toggle completion status.
+Delete Tasks: Remove tasks from the list and database.
+Responsive UI: Black background with purple accents, featuring glow effects and animations.
+Persistent Storage: Tasks are stored in MongoDB Atlas for cloud-based persistence.
 
-## Available Scripts
+Tech Stack
 
-In the project directory, you can run:
+Frontend: React, Tailwind CSS (v3.4.17), Axios
+Backend: Node.js, Express.js, Mongoose
+Database: MongoDB Atlas
+Environment: dotenv for configuration
+Tools: npm, MongoDB Atlas for cloud database
 
-### `npm start`
+Project Structure
+todo-app/
+├── backend/
+│   ├── models/
+│   ├── routes/
+│   ├── .env
+│   ├── server.js
+│   ├── package.json
+│   └── ...
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── App.js
+│   │   ├── index.css
+│   │   └── ...
+│   ├── tailwind.config.js
+│   ├── package.json
+│   └── ...
+├── README.md
+└── .gitignore
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Node.js: v16 or later (check with node -v).
+MongoDB Atlas: A free-tier account for cloud database storage.
+Git: For version control (optional).
+Text Editor: VS Code recommended.
 
-### `npm test`
+Setup Instructions
+1. Clone the Repository
+git clone <repository-url>
+cd todo-app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Backend Setup
 
-### `npm run build`
+Navigate to Backend:cd backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install Dependencies:npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Configure Environment:
+Create a .env file in backend/:PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/tododb?retryWrites=true&w=majority
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Replace <username>, <password>, and <cluster-name> with your MongoDB Atlas credentials.
+Example:PORT=5000
+MONGO_URI=mongodb+srv://prismhex:1234mnbvcxz@todoapp.l15lil1.mongodb.net/tododb?retryWrites=true&w=majority
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+MongoDB Atlas Configuration:
+Log in to MongoDB Atlas.
+Create a cluster (e.g., todoapp).
+In Database Access, add a user (e.g., prismhex) with Atlas Admin privileges.
+In Network Access, whitelist your IP address:
+Add your current IP (curl https://ipinfo.io/ip) or 0.0.0.0/0 (less secure).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+Copy the connection string from Database > Connect > Connect your application and update .env.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Start the Backend:npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Should output:Server running on port 5000
+MongoDB Connected: todoapp.mongodb.net
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. Frontend Setup
 
-### `npm run build` fails to minify
+Navigate to Frontend:cd ../frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Install Dependencies:npm install
+
+
+Configure Tailwind CSS:
+Ensure tailwind.config.js exists with:module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        'dark-bg': '#1a1a1a',
+        'dark-card': '#2a2a2a',
+        'purple-accent': '#6b46c1',
+        'purple-hover': '#805ad5',
+      },
+    },
+  },
+  plugins: [],
+}
+
+
+Verify src/index.css includes Tailwind directives and custom glow animation:@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(107, 70, 193, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(107, 70, 193, 0.8); }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+
+
+
+Start the Frontend:npm start
+
+
+Opens http://localhost:3000 in your browser.
+
+
+
+4. Verify Setup
+
+Backend: Test the API:curl http://localhost:5000/api/tasks
+
+
+Should return [] (empty array) or a list of tasks.
+
+
+Frontend: Open http://localhost:3000. You should see a black-and-purple UI with a glowing "Add Task" button.
+MongoDB Atlas: Check tododb.tasks collection for stored tasks.
+
+Usage
+
+Add a Task:
+Enter a title and optional description in the form.
+Click Add Task (glows on hover).
+Task appears in the list.
+
+
+View Tasks:
+Tasks display with title, description, and completion status.
+
+
+Edit a Task:
+Click Edit, update details, and click Save.
+
+
+Delete a Task:
+Click Delete to remove a task.
+
+
+Toggle Completion:
+Check the checkbox to mark a task as complete (strikes through).
+
+
+
+Troubleshooting
+
+MongoDB Connection Errors:
+Bad Auth: Verify MONGO_URI credentials in .env. Reset password in Atlas if needed.
+IP Whitelist: Update Atlas Network Access with your current IP (curl https://ipinfo.io/ip).
+Test connection:mongosh "mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/tododb"
+
+
+
+
+Delete Button Not Working:
+Check browser console (F12 > Console) for errors.
+Test API:curl -X DELETE http://localhost:5000/api/tasks/<task-id>
+
+
+
+
+Styles Not Applying:
+Ensure tailwind.config.js and index.css are correct.
+Run npm install and restart frontend:npm install
+npm start
+
+
+
+
+CORS Errors:
+Verify backend/server.js includes app.use(cors()).
+
+
+
+Future Improvements
+
+Real-Time Updates: Remove window.location.reload() in TaskForm.js and use state to update the task list.
+Delete Confirmation: Add a confirmation dialog before deleting tasks.
+Animations: Add fade-in effects for new tasks.
+Authentication: Implement user login to manage personal task lists.
+Deployment: Deploy to Render or Heroku with a production MongoDB Atlas cluster.
+
+License
+This project is for educational purposes and not licensed for commercial use.
+Acknowledgments
+
+Built as a college project to demonstrate MERN stack development.
+Styled with Tailwind CSS for a modern UI.
+Thanks to MongoDB Atlas for free-tier cloud database hosting.
+
