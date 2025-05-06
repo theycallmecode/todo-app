@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 MERN To-Do List Application
 A full-stack to-do list application built with the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. The app allows users to create, read, update, and delete tasks with a modern black-and-purple UI, featuring a glowing "Add Task" button and smooth transitions.
 This project was developed as a college assignment to demonstrate proficiency in full-stack web development.
@@ -228,4 +229,6 @@ Acknowledgments
 Built as a college project to demonstrate MERN stack development.
 Styled with Tailwind CSS for a modern UI.
 Thanks to MongoDB Atlas for free-tier cloud database hosting.
+=======
+>>>>>>> d44a878b87d82e9a6bf292999aa1ef528202c92f
 
