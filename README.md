@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 MERN To-Do List Application
 A full-stack to-do list application built with the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. The app allows users to create, read, update, and delete tasks with a modern black-and-purple UI, featuring a glowing "Add Task" button and smooth transitions.
 This project was developed as a college assignment to demonstrate proficiency in full-stack web development.
@@ -54,25 +53,32 @@ cd todo-app
 
 2. Backend Setup
 
-Navigate to Backend:cd backend
+Navigate to Backend:
+cd backend
 
 
-Install Dependencies:npm install
+Install Dependencies:
+npm install
 
 
 Configure Environment:
-Create a .env file in backend/:PORT=5000
+
+Create a .env file in backend/:
+PORT=5000
 MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/tododb?retryWrites=true&w=majority
 
 
 Replace <username>, <password>, and <cluster-name> with your MongoDB Atlas credentials.
-Example:PORT=5000
+
+Example:
+PORT=5000
 MONGO_URI=mongodb+srv://prismhex:1234mnbvcxz@todoapp.l15lil1.mongodb.net/tododb?retryWrites=true&w=majority
 
 
 
 
 MongoDB Atlas Configuration:
+
 Log in to MongoDB Atlas.
 Create a cluster (e.g., todoapp).
 In Database Access, add a user (e.g., prismhex) with Atlas Admin privileges.
@@ -83,10 +89,12 @@ Add your current IP (curl https://ipinfo.io/ip) or 0.0.0.0/0 (less secure).
 Copy the connection string from Database > Connect > Connect your application and update .env.
 
 
-Start the Backend:npm start
+Start the Backend:
+npm start
 
 
-Should output:Server running on port 5000
+Should output:
+Server running on port 5000
 MongoDB Connected: todoapp.mongodb.net
 
 
@@ -95,14 +103,18 @@ MongoDB Connected: todoapp.mongodb.net
 
 3. Frontend Setup
 
-Navigate to Frontend:cd ../frontend
+Navigate to Frontend:
+cd ../frontend
 
 
-Install Dependencies:npm install
+Install Dependencies:
+npm install
 
 
 Configure Tailwind CSS:
-Ensure tailwind.config.js exists with:module.exports = {
+
+Ensure tailwind.config.js exists with:
+module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -118,7 +130,8 @@ Ensure tailwind.config.js exists with:module.exports = {
 }
 
 
-Verify src/index.css includes Tailwind directives and custom glow animation:@tailwind base;
+Verify src/index.css includes Tailwind directives and custom glow animation:
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -141,7 +154,8 @@ body {
 
 
 
-Start the Frontend:npm start
+Start the Frontend:
+npm start
 
 
 Opens http://localhost:3000 in your browser.
@@ -150,14 +164,17 @@ Opens http://localhost:3000 in your browser.
 
 4. Verify Setup
 
-Backend: Test the API:curl http://localhost:5000/api/tasks
+Backend: Test the API:
+curl http://localhost:5000/api/tasks
 
 
 Should return [] (empty array) or a list of tasks.
 
 
 Frontend: Open http://localhost:3000. You should see a black-and-purple UI with a glowing "Add Task" button.
+
 MongoDB Atlas: Check tododb.tasks collection for stored tasks.
+
 
 Usage
 
@@ -187,29 +204,40 @@ Check the checkbox to mark a task as complete (strikes through).
 Troubleshooting
 
 MongoDB Connection Errors:
+
 Bad Auth: Verify MONGO_URI credentials in .env. Reset password in Atlas if needed.
+
 IP Whitelist: Update Atlas Network Access with your current IP (curl https://ipinfo.io/ip).
-Test connection:mongosh "mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/tododb"
+
+Test connection:
+mongosh "mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/tododb"
 
 
 
 
 Delete Button Not Working:
+
 Check browser console (F12 > Console) for errors.
-Test API:curl -X DELETE http://localhost:5000/api/tasks/<task-id>
+
+Test API:
+curl -X DELETE http://localhost:5000/api/tasks/<task-id>
 
 
 
 
 Styles Not Applying:
+
 Ensure tailwind.config.js and index.css are correct.
-Run npm install and restart frontend:npm install
+
+Run npm install and restart frontend:
+npm install
 npm start
 
 
 
 
 CORS Errors:
+
 Verify backend/server.js includes app.use(cors()).
 
 
@@ -229,6 +257,4 @@ Acknowledgments
 Built as a college project to demonstrate MERN stack development.
 Styled with Tailwind CSS for a modern UI.
 Thanks to MongoDB Atlas for free-tier cloud database hosting.
-=======
->>>>>>> d44a878b87d82e9a6bf292999aa1ef528202c92f
 
